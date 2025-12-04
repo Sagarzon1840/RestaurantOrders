@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SpendingControl.Infrastructure.Persistence;
-using SpendingControl.Domain.Interfaces.Repositories;
-using SpendingControl.Infrastructure.Repositories;
+using RestaurantOrders.Infrastructure.Persistence;
+using RestaurantOrders.Domain.Interfaces.Repositories;
+using RestaurantOrders.Infrastructure.Repositories;
 
-namespace SpendingControl.Infrastructure.Configuration
+namespace RestaurantOrders.Infrastructure.Configuration
 {
     public static class DependencyInjection
     {
@@ -25,13 +25,8 @@ namespace SpendingControl.Infrastructure.Configuration
             });
 
 
-            // Repositories
-            services.AddScoped<ISpendTypeRepository, SpendTypeRepository>();
+            // Repositories            
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IMonetaryFundRepository, MonetaryFundRepository>();
-            services.AddScoped<IBudgetRepository, BudgetRepository>();
-            services.AddScoped<IExpenseRepository, ExpenseRepository>();
-            services.AddScoped<IDepositRepository, DepositRepository>();
 
             return services;
         }

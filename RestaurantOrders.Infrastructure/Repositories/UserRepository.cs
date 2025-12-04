@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpendingControl.Domain.Entities;
-using SpendingControl.Infrastructure.Persistence;
-using SpendingControl.Domain.Interfaces.Repositories;
+using RestaurantOrders.Domain.Entities;
+using RestaurantOrders.Infrastructure.Persistence;
+using RestaurantOrders.Domain.Interfaces.Repositories;
 
-namespace SpendingControl.Infrastructure.Repositories
+namespace RestaurantOrders.Infrastructure.Repositories
 {
     internal class UserRepository : IUserRepository
     {

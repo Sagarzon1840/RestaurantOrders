@@ -1,7 +1,7 @@
-﻿using SpendingControl.Domain.Entities;
+﻿using RestaurantOrders.Domain.Entities;
 using System.Threading.Tasks;
 
-namespace SpendingControl.Application.Interfaces
+namespace RestaurantOrders.Application.Interfaces
 {
     public interface IUserService
     {

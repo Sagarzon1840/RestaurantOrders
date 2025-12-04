@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SpendingControl.Api.Models
+namespace RestaurantOrders.Api.Models
 {
     public class UserRegisterDTO
     {

@@ -1,4 +1,4 @@
-using SpendingControl.Api; // namespace for Startup
+using RestaurantOrders.Api; // namespace for Startup
 
 var builder = WebApplication.CreateBuilder(args);
 // Build host with Startup (mirror LambdaEntryPoint behavior)
@@ -8,4 +8,4 @@ startup.ConfigureServices(builder.Services);
 var app = builder.Build();
 startup.Configure(app, app.Environment);
 
-app.Run()
+app.Run();

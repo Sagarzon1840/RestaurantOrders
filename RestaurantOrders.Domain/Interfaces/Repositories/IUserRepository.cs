@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using SpendingControl.Domain.Entities;
+using RestaurantOrders.Domain.Entities;
 
-namespace SpendingControl.Domain.Interfaces.Repositories
+namespace RestaurantOrders.Domain.Interfaces.Repositories
 {
     public interface IUserRepository
     {

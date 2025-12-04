@@ -1,10 +1,10 @@
-﻿using SpendingControl.Application.Interfaces;
-using SpendingControl.Domain.Entities;
-using SpendingControl.Domain.Interfaces.Repositories;
+﻿using RestaurantOrders.Application.Interfaces;
+using RestaurantOrders.Domain.Entities;
+using RestaurantOrders.Domain.Interfaces.Repositories;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SpendingControl.Application.UseCases
+namespace RestaurantOrders.Application.UseCases
 {
     public class UserService : IUserService
     {

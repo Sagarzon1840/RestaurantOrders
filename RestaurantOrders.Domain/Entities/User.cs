@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpendingControl.Domain.Entities
+namespace RestaurantOrders.Domain.Entities
 {
     public class User
     {

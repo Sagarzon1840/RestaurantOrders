@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SpendingControl.Domain.Entities;
+using RestaurantOrders.Domain.Entities;
 
-namespace SpendingControl.Infrastructure.Persistence.Configs
+namespace RestaurantOrders.Infrastructure.Persistence.Configs
 {
     public class UserDBConfiguration : IEntityTypeConfiguration<User>
     {

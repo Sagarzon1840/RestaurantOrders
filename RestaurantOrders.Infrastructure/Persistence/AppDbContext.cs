@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SpendingControl.Domain.Entities;
+using RestaurantOrders.Domain.Entities;
 using System;
 
-namespace SpendingControl.Infrastructure.Persistence
+namespace RestaurantOrders.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {
@@ -11,12 +11,6 @@ namespace SpendingControl.Infrastructure.Persistence
         }
 
         public DbSet<User> Users => Set<User>();
-        public DbSet<SpendType> SpendTypes => Set<SpendType>();
-        public DbSet<MonetaryFund> MonetaryFunds => Set<MonetaryFund>();
-        public DbSet<Budget> Budgets => Set<Budget>();
-        public DbSet<SpendingHeader> SpendingHeaders => Set<SpendingHeader>();
-        public DbSet<SpendingDetail> SpendingDetails => Set<SpendingDetail>();
-        public DbSet<Deposit> Deposits => Set<Deposit>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

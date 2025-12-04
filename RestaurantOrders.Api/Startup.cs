@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using SpendingControl.Api.Filters;
-using SpendingControl.Application.Configuration;
-using SpendingControl.Infrastructure.Configuration;
+using RestaurantOrders.Api.Filters;
+using RestaurantOrders.Application.Configuration;
+using RestaurantOrders.Infrastructure.Configuration;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using System.Text;
 
-namespace SpendingControl.Api;
+namespace RestaurantOrders.Api;
 
 public class Startup
 {
@@ -37,8 +37,8 @@ public class Startup
 
         var jwt = _configuration.GetSection("Jwt");
         var key = jwt["Key"] ?? string.Empty;
-        var issuer = jwt["Issuer"] ?? "spendingcontrol";
-        var audience = jwt["Audience"] ?? "spendingcontrol";
+        var issuer = jwt["Issuer"] ?? "RestaurantOrders";
+        var audience = jwt["Audience"] ?? "RestaurantOrders";
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
@@ -63,9 +63,9 @@ public class Startup
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "SpendingControl API",
+                Title = "RestaurantOrders API",
                 Version = "v1",
-                Description = "API to spending control, deposits and monthly info per type.",
+                Description = "API to manage a Restaurant, with users and orders control",
             });
 
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
