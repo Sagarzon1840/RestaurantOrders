@@ -1,4 +1,5 @@
 ﻿using System;
+using RestaurantOrders.Domain.Enums;
 
 namespace RestaurantOrders.Domain.Entities
 {
@@ -12,6 +13,7 @@ namespace RestaurantOrders.Domain.Entities
         public byte[]? PasswordHash { get; set; }
         public byte[]? PasswordSalt { get; set; }
 
+        public UserRole Role { get; set; } = UserRole.User;
         public DateTime DateRegistered { get; set; }
         public bool IsActive { get; set; } = true;
     }

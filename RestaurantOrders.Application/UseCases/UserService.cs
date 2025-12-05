@@ -65,6 +65,11 @@ namespace RestaurantOrders.Application.UseCases
             return await _userRepository.FindByUserNameAsync(username.Trim());
         }
 
+        public async Task<User?> GetByIdAsync(Guid id)
+        {
+            return await _userRepository.GetByIdAsync(id);
+        }
+
         private static void ValidatePassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Password is required", nameof(password));

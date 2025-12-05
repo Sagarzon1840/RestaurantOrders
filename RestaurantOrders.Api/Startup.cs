@@ -19,6 +19,9 @@ public class Startup
         services.AddApplication();
         services.AddInfrastructure(_configuration);
 
+        // Required for ICurrentUserService
+        services.AddHttpContextAccessor();
+
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

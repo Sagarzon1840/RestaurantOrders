@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using RestaurantOrders.Domain.Exceptions;
 
 namespace RestaurantOrders.Api.Filters
 {
@@ -7,10 +8,20 @@ namespace RestaurantOrders.Api.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            // Simple passthrough for now
-            if (context.Exception is ArgumentException)
+            if (context.Exception is DomainValidationException domainEx)
             {
-                context.Result = new BadRequestObjectResult(new { error = context.Exception.Message });
+                context.Result = new BadRequestObjectResult(new { error = domainEx.Message });
+                context.ExceptionHandled = true;
+            }
+            else if (context.Exception is ArgumentException argEx)
+            {
+                context.Result = new BadRequestObjectResult(new { error = argEx.Message });
+                context.ExceptionHandled = true;
+            }
+            else if (context.Exception is InvalidOperationException opEx)
+            {
+                context.Result = new BadRequestObjectResult(new { error = opEx.Message });
+                context.ExceptionHandled = true;
             }
         }
     }

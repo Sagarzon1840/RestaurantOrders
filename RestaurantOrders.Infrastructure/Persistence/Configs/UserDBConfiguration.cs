@@ -13,6 +13,13 @@ namespace RestaurantOrders.Infrastructure.Persistence.Configs
             b.Property(u => u.UserName).IsRequired().HasMaxLength(50);
             b.Property(u => u.DateRegistered).IsRequired();
             b.Property(u => u.IsActive).HasDefaultValue(true);
+            
+            b.Property(u => u.Role)
+                .IsRequired()
+                .HasConversion<string>()
+                .HasMaxLength(20);
+
+            b.HasIndex(u => u.UserName).IsUnique();
         }
     }
 }

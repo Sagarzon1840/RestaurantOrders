@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using RestaurantOrders.Infrastructure.Persistence;
 using RestaurantOrders.Domain.Interfaces.Repositories;
 using RestaurantOrders.Infrastructure.Repositories;
+using RestaurantOrders.Application.Interfaces;
+using RestaurantOrders.Infrastructure.Services;
 
 namespace RestaurantOrders.Infrastructure.Configuration
 {
@@ -24,9 +26,14 @@ namespace RestaurantOrders.Infrastructure.Configuration
                 });
             });
 
-
             // Repositories            
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
+            // Infrastructure services
+            services.AddScoped<IJwtService, JwtTokenService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }
