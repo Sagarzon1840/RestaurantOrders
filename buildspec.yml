@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+
+  build:
+    commands:
+      - echo "Restaurando dependencias..."
+      - dotnet restore ./RestaurantOrders.Api/RestaurantOrders.Api.csproj
+      - echo "Publicando Lambda .NET 8..."
+      - dotnet publish ./RestaurantOrders.Api/RestaurantOrders.Api.csproj -c Release -o ./output -r linux-x64 --self-contained false /p:CopyLocalLockFileAssemblies=true
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: output
+  discard-paths: yes
