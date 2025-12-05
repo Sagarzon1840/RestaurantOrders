@@ -220,8 +220,3 @@ dotnet test
 ## License
 
 This project is under the MIT License.
-
-## Author
-
-**Sagarzon1840**
-- GitHub: [@Sagarzon1840](https://github.com/Sagarzon1840)
