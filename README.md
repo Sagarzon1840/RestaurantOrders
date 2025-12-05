@@ -5,7 +5,7 @@ REST API for restaurant order management, developed with **.NET 8** following **
 ## Features
 
 - **Menu Management**: Sandwiches and extras with categories
-- **Order System**: Create, update and delete orders
+- **Order System**: Create, update, and delete orders
 - **Automatic Discounts**: Combos with 10%, 15% and 20% discounts
 - **JWT Authentication**: Admin and User roles
 - **Business Validations**: Duplicate control in orders
@@ -14,10 +14,10 @@ REST API for restaurant order management, developed with **.NET 8** following **
 
 ```
 RestaurantOrders/
-??? RestaurantOrders.Api/           # Presentation layer (Controllers, Filters)
-??? RestaurantOrders.Application/   # Use cases and DTOs
-??? RestaurantOrders.Domain/        # Entities, interfaces and business rules
-??? RestaurantOrders.Infrastructure/# Repositories and external services
+  RestaurantOrders.Api/           # Presentation layer (Controllers, Filters)
+  RestaurantOrders.Application/   # Use cases and DTOs
+  RestaurantOrders.Domain/        # Entities, interfaces, and business rules
+  RestaurantOrders.Infrastructure/# Repositories and external services
 ```
 
 ## Available Menu
