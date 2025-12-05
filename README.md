@@ -1,104 +1,104 @@
-# ?? RestaurantOrders API
+# RestaurantOrders API
 
-API REST para gestión de pedidos de un restaurante, desarrollada con **.NET 8** siguiendo **Arquitectura Hexagonal** y principios **SOLID**.
+REST API for restaurant order management, developed with **.NET 8** following **Hexagonal Architecture** and **SOLID** principles.
 
-## ?? Características
+## Features
 
-- **Gestión de Menú**: Sandwiches y extras con categorías
-- **Sistema de Órdenes**: Creación, actualización y eliminación de pedidos
-- **Descuentos Automáticos**: Combos con descuentos del 10%, 15% y 20%
-- **Autenticación JWT**: Roles de Admin y Usuario
-- **Validaciones de Negocio**: Control de duplicados en órdenes
+- **Menu Management**: Sandwiches and extras with categories
+- **Order System**: Create, update and delete orders
+- **Automatic Discounts**: Combos with 10%, 15% and 20% discounts
+- **JWT Authentication**: Admin and User roles
+- **Business Validations**: Duplicate control in orders
 
-## ??? Arquitectura
+## Architecture
 
 ```
 RestaurantOrders/
-??? RestaurantOrders.Api/           # Capa de presentación (Controllers, Filters)
-??? RestaurantOrders.Application/   # Casos de uso y DTOs
-??? RestaurantOrders.Domain/        # Entidades, interfaces y reglas de negocio
-??? RestaurantOrders.Infrastructure/# Repositorios y servicios externos
+??? RestaurantOrders.Api/           # Presentation layer (Controllers, Filters)
+??? RestaurantOrders.Application/   # Use cases and DTOs
+??? RestaurantOrders.Domain/        # Entities, interfaces and business rules
+??? RestaurantOrders.Infrastructure/# Repositories and external services
 ```
 
-## ??? Menú Disponible
+## Available Menu
 
 ### Sandwiches
-| Item | Precio |
-|------|--------|
+| Item | Price |
+|------|-------|
 | Burger | $5.00 |
 | Egg | $4.50 |
 | Bacon | $7.00 |
 
 ### Extras
-| Item | Precio |
-|------|--------|
+| Item | Price |
+|------|-------|
 | Fries | $2.00 |
 | Soft Drink | $2.50 |
 
-## ?? Reglas de Descuento
+## Discount Rules
 
-| Combo | Descuento |
-|-------|-----------|
+| Combo | Discount |
+|-------|----------|
 | Sandwich + Fries + Soft Drink | **20%** |
 | Sandwich + Soft Drink | **15%** |
 | Sandwich + Fries | **10%** |
 
-## ?? Endpoints
+## Endpoints
 
-### ?? Públicos
-| Método | Endpoint | Descripción |
+### Public
+| Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/auth/login` | Autenticación |
-| `POST` | `/api/auth/seed-admin` | Crear admin inicial |
-| `GET` | `/api/menu` | Listar todo el menú |
-| `GET` | `/api/menu/sandwiches` | Listar sandwiches |
-| `GET` | `/api/menu/extras` | Listar extras |
-| `GET` | `/api/menu/{id}` | Obtener item por ID |
+| `POST` | `/api/auth/login` | Authentication |
+| `POST` | `/api/auth/seed-admin` | Create initial admin |
+| `GET` | `/api/menu` | List all menu items |
+| `GET` | `/api/menu/sandwiches` | List sandwiches |
+| `GET` | `/api/menu/extras` | List extras |
+| `GET` | `/api/menu/{id}` | Get item by ID |
 
-### ?? Requieren Autenticación
-| Método | Endpoint | Descripción | Rol |
-|--------|----------|-------------|-----|
-| `POST` | `/api/orders` | Crear orden | Usuario |
-| `GET` | `/api/orders` | Listar órdenes | Usuario/Admin |
-| `GET` | `/api/orders/{id}` | Obtener orden | Owner/Admin |
-| `PUT` | `/api/orders/{id}` | Actualizar orden | Owner/Admin |
-| `DELETE` | `/api/orders/{id}` | Eliminar orden | Owner/Admin |
-| `GET` | `/api/users/{id}/orders` | Órdenes de usuario | Owner/Admin |
+### Require Authentication
+| Method | Endpoint | Description | Role |
+|--------|----------|-------------|------|
+| `POST` | `/api/orders` | Create order | User |
+| `GET` | `/api/orders` | List orders | User/Admin |
+| `GET` | `/api/orders/{id}` | Get order | Owner/Admin |
+| `PUT` | `/api/orders/{id}` | Update order | Owner/Admin |
+| `DELETE` | `/api/orders/{id}` | Delete order | Owner/Admin |
+| `GET` | `/api/users/{id}/orders` | User orders | Owner/Admin |
 
-### ??? Solo Admin
-| Método | Endpoint | Descripción |
+### Admin Only
+| Method | Endpoint | Description |
 |--------|----------|-------------|
-| `POST` | `/api/menu` | Crear item de menú |
-| `PUT` | `/api/menu/{id}` | Actualizar item |
-| `DELETE` | `/api/menu/{id}` | Desactivar item |
-| `POST` | `/api/users` | Crear usuario |
-| `GET` | `/api/users/{id}` | Obtener usuario |
+| `POST` | `/api/menu` | Create menu item |
+| `PUT` | `/api/menu/{id}` | Update item |
+| `DELETE` | `/api/menu/{id}` | Deactivate item |
+| `POST` | `/api/users` | Create user |
+| `GET` | `/api/users/{id}` | Get user |
 
-## ?? Inicio Rápido
+## Quick Start
 
-### Prerrequisitos
+### Prerequisites
 - .NET 8 SDK
 - SQL Server
-- Docker (opcional)
+- Docker (optional)
 
-### Configuración
+### Configuration
 
-1. **Clonar el repositorio**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/Sagarzon1840/RestaurantOrders.git
 cd RestaurantOrders
 ```
 
-2. **Configurar conexión a base de datos**
+2. **Configure database connection**
 
-Editar `RestaurantOrders.Api/appsettings.Development.json`:
+Edit `RestaurantOrders.Api/appsettings.Development.json`:
 ```json
 {
   "ConnectionStrings": {
     "Default": "Server=localhost;Database=RestaurantOrders;Trusted_Connection=True;TrustServerCertificate=True;"
   },
   "Jwt": {
-    "Key": "tu-clave-secreta-de-al-menos-32-caracteres",
+    "Key": "your-secret-key-at-least-32-characters",
     "Issuer": "restaurantorders",
     "Audience": "restaurantorders",
     "ExpirationMinutes": 50
@@ -106,26 +106,26 @@ Editar `RestaurantOrders.Api/appsettings.Development.json`:
 }
 ```
 
-3. **Ejecutar migraciones**
+3. **Run migrations**
 ```bash
 dotnet ef migrations add InitialCreate --project RestaurantOrders.Infrastructure --startup-project RestaurantOrders.Api
 dotnet ef database update --project RestaurantOrders.Infrastructure --startup-project RestaurantOrders.Api
 ```
 
-4. **Ejecutar la aplicación**
+4. **Run the application**
 ```bash
 cd RestaurantOrders.Api
 dotnet run
 ```
 
-5. **Acceder a Swagger**
+5. **Access Swagger**
 ```
 https://localhost:7xxx/swagger
 ```
 
-### Configuración Inicial
+### Initial Setup
 
-1. **Crear usuario Admin**
+1. **Create Admin user**
 ```http
 POST /api/auth/seed-admin
 ```
@@ -141,7 +141,7 @@ Content-Type: application/json
 }
 ```
 
-3. **Crear items del menú** (usar token de admin)
+3. **Create menu items** (use admin token)
 ```http
 POST /api/menu
 Authorization: Bearer {token}
@@ -155,16 +155,16 @@ Content-Type: application/json
 }
 ```
 
-## ?? Docker
+## Docker
 
 ```bash
 docker build -t restaurant-orders .
 docker run -p 8080:80 restaurant-orders
 ```
 
-## ?? Ejemplos de Uso
+## Usage Examples
 
-### Crear una orden con combo completo (20% descuento)
+### Create order with full combo (20% discount)
 ```http
 POST /api/orders
 Authorization: Bearer {token}
@@ -175,7 +175,7 @@ Content-Type: application/json
 }
 ```
 
-**Respuesta:**
+**Response:**
 ```json
 {
     "id": "...",
@@ -186,7 +186,7 @@ Content-Type: application/json
 }
 ```
 
-### Validación de duplicados
+### Duplicate validation
 ```http
 POST /api/orders
 {
@@ -194,34 +194,34 @@ POST /api/orders
 }
 ```
 
-**Respuesta (400):**
+**Response (400):**
 ```json
 {
     "error": "An order can only contain one sandwich. Please remove the existing sandwich before adding a new one."
 }
 ```
 
-## ?? Tests
+## Tests
 
-Ejecutar pruebas:
+Run tests:
 ```bash
 dotnet test
 ```
 
-## ?? Tecnologías
+## Technologies
 
 - **.NET 8**
 - **Entity Framework Core 8**
 - **SQL Server**
 - **JWT Authentication**
 - **Swagger/OpenAPI**
-- **AWS Lambda** (opcional)
+- **AWS Lambda** (optional)
 
-## ?? Licencia
+## License
 
-Este proyecto está bajo la Licencia MIT.
+This project is under the MIT License.
 
-## ?? Autor
+## Author
 
 **Sagarzon1840**
 - GitHub: [@Sagarzon1840](https://github.com/Sagarzon1840)
